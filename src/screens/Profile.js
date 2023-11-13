@@ -55,6 +55,9 @@ const Profile = ({ navigation, route }) => {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => <CustomButton color={Colors.white} title={getLocale(language, 'edit')} onPress={() => handleOpenEditModal()} />,
+      headerStyle: {
+        backgroundColor: getColor(color),
+      },
     });
 
     const showSubscription = Keyboard.addListener('keyboardWillShow', keyboardWillShow);
@@ -65,6 +68,15 @@ const Profile = ({ navigation, route }) => {
       hideSubscription.remove();
     };
   }, []);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <CustomButton color={Colors.white} title={getLocale(language, 'edit')} onPress={() => handleOpenEditModal()} />,
+      headerStyle: {
+        backgroundColor: getColor(color),
+      },
+    });
+  }, [color, language]);
 
   const keyboardWillShow = (event) => {
     Animated.timing(paddingInput, {
@@ -150,8 +162,8 @@ const Profile = ({ navigation, route }) => {
               ]}
             >
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
-                <Button title='Annuler' onPress={() => handleCancelEdit()} />
-                <Button title='OK' onPress={() => handleEdit()} />
+                <Button color={Platform.OS === 'android' ? getColor(color) : null} title={getLocale(language, 'cancel')} onPress={() => handleCancelEdit()} />
+                <Button color={Platform.OS === 'android' ? getColor(color) : null} title={getLocale(language, 'ok')} onPress={() => handleEdit()} />
               </View>
               <Text style={[styles.editModalTitle, stylesDark.editModalTitle]}>{getLocale(language, 'editProfile')}</Text>
               {Field({ name: getLocale(language, 'firstName'), value: editedUser.firstName, type: 'firstName', edited: true, editedUser, setEditedUser })}

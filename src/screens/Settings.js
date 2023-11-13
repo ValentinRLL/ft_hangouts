@@ -34,8 +34,8 @@ const Settings = () => {
   }, [color]);
 
   return (
-    <ScrollView>
-      <View style={[styles.container, { flex: 1, padding: 20 }, stylesDark.container, { paddingLeft: insets.left || 20, paddingRight: insets.right }]}>
+    <ScrollView style={[styles.container, { flex: 1, padding: 20 }, stylesDark.container, { paddingLeft: insets.left || 20, paddingRight: insets.right }]}>
+      <View style={{ marginBottom: 50 }}>
         <Text style={[globalStyles.title, stylesDark.title]}>{getLocale(language, 'settings')}</Text>
         <View style={{ marginTop: 20 }}>
           <Text style={[globalStyles.subTitle, stylesDark.subTitle]}>{getLocale(language, 'language')}</Text>

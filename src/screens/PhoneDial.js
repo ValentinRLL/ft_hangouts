@@ -60,6 +60,7 @@ const PhoneDial = () => {
     navigation.setOptions({
       headerStyle: { backgroundColor: getColor(color) },
       headerTitle: getLocale(language, 'keypad'),
+      headerShown: false,
     });
   }, [color, language]);
 

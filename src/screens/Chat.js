@@ -44,6 +44,9 @@ const Chat = ({ route, navigation }) => {
     fetchMessages();
     navigation.setOptions({
       headerRight: () => <CustomButton color={Colors.white} title={getLocale(language, 'checkProfile')} onPress={() => navigation.navigate('Profile', { user: user })} />,
+      headerStyle: {
+        backgroundColor: getColor(color),
+      },
     });
 
     const showSubscription = Keyboard.addListener('keyboardWillShow', keyboardWillShow);
@@ -54,6 +57,15 @@ const Chat = ({ route, navigation }) => {
       hideSubscription.remove();
     };
   }, []);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <CustomButton color={Colors.white} title={getLocale(language, 'checkProfile')} onPress={() => navigation.navigate('Profile', { user: user })} />,
+      headerStyle: {
+        backgroundColor: getColor(color),
+      },
+    });
+  }, [color, language]);
 
   const sendMessage = async () => {
     const trimmedMessage = message.trim();

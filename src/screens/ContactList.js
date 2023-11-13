@@ -1,4 +1,20 @@
-import { Alert, Animated, Button, FlatList, Image, Keyboard, KeyboardAvoidingView, Modal, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Alert,
+  Animated,
+  Button,
+  FlatList,
+  Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Modal,
+  Pressable,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+} from 'react-native';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { addContactInList, getContactList } from '../api/storage';
 import SingleProfileSearch from '../components/SingleProfileSearch';
@@ -149,8 +165,8 @@ const ContactList = () => {
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
           <Animated.ScrollView style={[{ ...globalStyles.modalContainer, flex: 1 }, stylesDark.container, { paddingLeft: insets.left || 20, paddingRight: insets.right || 20 }]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
-              <Button title={getLocale(language, 'cancel')} onPress={() => setNewContactModalVisible(false)} />
-              <Button title={getLocale(language, 'ok')} onPress={() => handleAddContact()} />
+              <Button color={Platform.OS === 'android' ? getColor(color) : null} title={getLocale(language, 'cancel')} onPress={() => setNewContactModalVisible(false)} />
+              <Button color={Platform.OS === 'android' ? getColor(color) : null} title={getLocale(language, 'ok')} onPress={() => handleAddContact()} />
             </View>
             <Text style={[globalStyles.title, stylesDark.title]}>{getLocale(language, 'addContact')}</Text>
             {Field({ name: getLocale(language, 'firstName'), value: newContact.firstName, type: 'firstName', edited: true, editedUser: newContact, setEditedUser: setNewContact })}

@@ -11,7 +11,7 @@ const Message = ({ message }) => {
   return (
     <View style={styles.messageContainer}>
       <View style={message.sender === 0 ? { ...styles.bubbleSent, backgroundColor: getColor(color) } : styles.bubbleReceived}>
-        <Text>{message.content}</Text>
+        <Text style={{ color: Colors.white }}>{message.content}</Text>
       </View>
       <View style={message.sender === 0 ? styles.timeSent : styles.timeReceived}>
         <Text style={message.sender === 0 ? styles.textTimeSent : styles.textTimeReceived}>

@@ -15,7 +15,7 @@ import { getUserColor, getUserDarkMode, getUserLanguage } from './src/api/storag
 import getLocale from './src/constants/localization';
 import { ThemeContext, getColor } from './src/helpers/functions';
 import Colors from './src/styles/Colors';
-import { Alert, AppState } from 'react-native';
+import { Alert, AppState, StatusBar } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -129,6 +129,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
+      <StatusBar hidden={true} />
       <MyBottomTab user={{ language, darkMode, color, setLanguage, setDarkMode, setColor }} />
     </NavigationContainer>
   );

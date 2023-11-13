@@ -72,7 +72,6 @@ const Profile = ({ navigation, route }) => {
       toValue: event.endCoordinates.height,
       useNativeDriver: false,
     }).start();
-    console.log('event.endCoordinates.height', event.endCoordinates.height);
   };
 
   const keyboardWillHide = (event) => {
